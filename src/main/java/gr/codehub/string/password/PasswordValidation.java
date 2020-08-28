@@ -35,7 +35,6 @@ public class PasswordValidation {
         return str.matches(pattern);
     }
 
-    private static boolean
 
     //    Return true if there is no 3 sequence characters (same or sequential ascii characters)
     protected static boolean noSequenceCharacters(String str) {
