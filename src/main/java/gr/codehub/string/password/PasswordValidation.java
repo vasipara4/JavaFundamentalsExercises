@@ -35,25 +35,26 @@ public class PasswordValidation {
         return str.matches(pattern);
     }
 
-    private  static boolean
+    private static boolean
 
-//    Return true if there is no 3 sequence characters (same or sequential ascii characters)
+    //    Return true if there is no 3 sequence characters (same or sequential ascii characters)
     protected static boolean noSequenceCharacters(String str) {
         int len = str.length();
         String patternSameCharacters = "(?i)(?:([a-z0-9])\\1{2,})*";
         final Pattern p = Pattern.compile(patternSameCharacters);
         final Matcher m = p.matcher(str);
 
-// Detect 3 sequential ASCII characters
+        // Detect 3 sequential ASCII characters
         for (int i = 0; (i + 2) < len; i++) {
-            if ((int) str.charAt(i) == (int) str.charAt(i + 1)-1 && (int) str.charAt(i + 1) == (int) str.charAt(i + 2) -1 ){
-                    System.out.println("sequence characters");
+            if ((int) str.charAt(i) == (int) str.charAt(i + 1) - 1 && (int) str.charAt(i + 1) == (int) str.charAt(i + 2) - 1) {
+                // System.out.println("sequence characters");
                 return false;
             }
         }
 
+        //Detect 3 same characters in sequence
         if (m.find()) {
-             System.out.println("Matches!");
+            //  System.out.println("Matches!");
             return false;
         }
 
