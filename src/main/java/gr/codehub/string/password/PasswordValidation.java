@@ -1,5 +1,8 @@
 package gr.codehub.string.password;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PasswordValidation {
 
 
@@ -10,39 +13,45 @@ public class PasswordValidation {
 
     protected static boolean existUppercase(String str) {
         String pattern = ".*(?=.*[A-Z]).*";
-        System.out.println(str.matches(pattern));
+//        System.out.println(str.matches(pattern));
         return str.matches(pattern);
     }
 
     protected static boolean existLowercase(String str) {
         String pattern = ".*(?=.*[a-z]).*";
-        System.out.println(str.matches(pattern));
+//        System.out.println(str.matches(pattern));
         return str.matches(pattern);
     }
 
     protected static boolean existNumber(String str) {
         String pattern = ".*(?=.*[0-9]).*";
-        System.out.println(str.matches(pattern));
+//        System.out.println(str.matches(pattern));
         return str.matches(pattern);
     }
 
     protected static boolean existSpecialChar(String str) {
         String pattern = ".*(?=.*[@#$%^&+=]).*";
-        System.out.println(str.matches(pattern));
+//        System.out.println(str.matches(pattern));
         return str.matches(pattern);
     }
 
     protected static boolean noSequenceCharacters(String str) {
         int len = str.length();
-        String patternSameCharacters = ".*(?i)(?:([a-z0-9])\\\\1{2,})*.*";
-
-
-        if (str.matches(patternSameCharacters))
-            return false;
-        for(int i=0;(i+2)<len;i++){
-        if (str.charAt(i) == str.charAt(i+1) && str.charAt(i+1) == str.charAt(i+2))
+        String patternSameCharacters = "(?i)(?:([a-z0-9])\\1{2,})*";
+        final Pattern p = Pattern.compile(patternSameCharacters);
+        final Matcher m = p.matcher(str);
+        if (m.find()) {
+            // System.out.println("Matches!");
             return false;
         }
+
+
+//        for (int i = 0; (i + 2) < len; i++) {
+//            if (str.charAt(i) == str.charAt(i + 1) && str.charAt(i + 1) == str.charAt(i + 2)){
+//                System.out.println("same chars");
+//                return false;}
+//        }
+
         return true;
 
     }
@@ -65,7 +74,6 @@ public class PasswordValidation {
             count++;
         if (noSequenceCharacters(password))
             count++;
-        System.out.println(count);
         return count;
     }
 

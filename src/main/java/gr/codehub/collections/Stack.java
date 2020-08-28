@@ -20,7 +20,6 @@ class Stack {
             return false;
         }
 
-        System.out.println("Inserting " + x);
         arr[++top] = x;
         return true;
     }
@@ -32,8 +31,6 @@ class Stack {
             System.out.println("Stack UnderFlow");
             return 0;
         }
-
-        System.out.println("Removing " + peek());
 
         // decrease stack size by 1 and (optionally) return the popped element
         return arr[top--];

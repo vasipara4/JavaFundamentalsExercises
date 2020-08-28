@@ -2,20 +2,22 @@ package gr.codehub.collections;
 
 public class StringUtil {
 
-    public void reverseString(StringBuffer str) {
+    public static String reverseString(String str) {
         int len = str.length();
+        char[] result = new char[len];
         Stack reversed = new Stack(len);
         int i;
         for (i = 0; i < len; i++)
             reversed.push(str.charAt(i));
         for (i = 0; i < len; i++) {
             char ch = reversed.pop();
-            str.setCharAt(i, ch);
+            result[i] = ch;
         }
 
+        return new String(result);
     }
 
-    public boolean isSymmetric(String str) {
+    public static boolean isSymmetric(String str) {
         int len = str.length();
         //Ignoring case sensitive comparison
         String strLower = str.toLowerCase();
@@ -28,7 +30,7 @@ public class StringUtil {
     }
 
 
-    public int descendingOrderDigits(int n) {
+    public static int descendingOrderDigits(int n) {
         int len = Integer.toString(n).length();
         int a[] = new int[len];
         int i = 0;

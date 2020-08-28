@@ -2,7 +2,7 @@ package gr.codehub.string.password;
 
 import java.util.Scanner;
 
-public class UI {
+public class UIPassword {
 
        public void startApp() {
         String password;

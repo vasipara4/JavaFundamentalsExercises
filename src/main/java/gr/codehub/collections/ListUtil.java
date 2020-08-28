@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 
-public class PrimeList {
+public class ListUtil {
+
 
     // Creating a new prime sublist without modifying the original list
     public static ArrayList<Integer> primeArrayList(ArrayList<Integer> list) {
