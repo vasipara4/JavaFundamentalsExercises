@@ -1,11 +1,12 @@
 package gr.codehub.collections;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UICollections {
 
 
-    private ArrayList<Integer> list = new ArrayList<>();
+    private List<Integer> list = new ArrayList<>();
     private int numbers;
     private String text;
 
