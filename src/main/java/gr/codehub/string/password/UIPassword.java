@@ -9,18 +9,7 @@ public class UIPassword {
         do {
             password = getPassword();
             if (PasswordValidation.acceptPassword(password)) {
-                switch (PasswordValidation.countCriteria(password)) {
-                    case 2:
-                    case 3:
-                        System.out.println("Password OK");
-                        break;
-                    case 4:
-                        System.out.println("Strong password");
-                        break;
-                    case 5:
-                        System.out.println("Very Strong password");
-                        break;
-                }
+                printPasswordStrength(password);
             } else
                 printInvalidInfo();
 
@@ -43,6 +32,22 @@ public class UIPassword {
             return true;
         else
             return false;
+    }
+
+
+    private void printPasswordStrength(String password){
+        switch (PasswordValidation.countCriteria(password)) {
+            case 2:
+            case 3:
+                System.out.println("Password OK");
+                break;
+            case 4:
+                System.out.println("Strong password");
+                break;
+            case 5:
+                System.out.println("Very Strong password");
+                break;
+        }
     }
 
     private void printInvalidInfo() {
