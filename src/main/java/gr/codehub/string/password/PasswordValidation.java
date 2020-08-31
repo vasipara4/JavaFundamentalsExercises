@@ -6,9 +6,10 @@ import java.util.regex.Pattern;
 public class PasswordValidation {
 
 
+    //Constants Declaration
     private static final int MIN_PASSWORD_LENGTH = 8;
     private static final int MIN_CRITERIA = 2;
-    //Password length 8 is mandatory, so the remaining criteria is 2
+    //Password length: 8 is mandatory, so the remaining criteria are 2
 
 
     protected static boolean existUppercase(String str) {
@@ -43,19 +44,25 @@ public class PasswordValidation {
         final Pattern p = Pattern.compile(patternSameCharacters);
         final Matcher m = p.matcher(str);
 
-        // Detect 3 sequential ASCII characters
+        // Detect 3 sequential ASCII characters (Only A-Za-z characters)
+        //        ASCII chars to numbers: A-> 65, X->88 , a->97, x->120
         for (int i = 0; (i + 2) < len; i++) {
-            if ((int) str.charAt(i) == (int) str.charAt(i + 1) - 1 && (int) str.charAt(i + 1) == (int) str.charAt(i + 2) - 1) {
-                // System.out.println("sequence characters");
-                return false;
+            int firstStepChar = str.charAt(i);
+            int secondStepChar = str.charAt(i + 1);
+            int thirdStepChar = str.charAt(i + 2);
+
+            if ((firstStepChar >= 65 && firstStepChar <= 88) || (firstStepChar >= 97 && firstStepChar <= 120)) {
+                if (firstStepChar == secondStepChar - 1 && secondStepChar == thirdStepChar - 1) {
+                    // System.out.println("sequence characters");
+                    return false;
+                }
             }
         }
 
         //Detect 3 same characters in sequence
-        if (m.find()) {
-            //  System.out.println("Matches!");
+        if (m.find())
             return false;
-        }
+
 
         return true;
 
