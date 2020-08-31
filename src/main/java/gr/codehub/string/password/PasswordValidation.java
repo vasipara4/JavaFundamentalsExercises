@@ -52,10 +52,9 @@ public class PasswordValidation {
         final Matcher m = p.matcher(str);
 
         //Detect 3 same characters in sequence
-        if (m.find()) {
-            System.out.println("Match");
+        if (m.find())
             return false;
-        }
+
 
 
         // Detect 3 sequential ASCII characters (Only A-Za-z characters)
