@@ -5,10 +5,9 @@ import java.util.Scanner;
 public class UIAlgorithms {
 
     public void startAlgorithms() {
-        String answer;
         do {
             menuInfo();
-            answer = getString();
+            String answer = getString();
             menuCases(answer);
         } while (continueToMenu());
     }
@@ -22,21 +21,36 @@ public class UIAlgorithms {
     private int getInteger() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Give an integer: ");
-        String n = scanner.nextLine();
-        return Integer.parseInt(n);
+        while (!scanner.hasNextInt()) {
+            System.out.println("That's not an Integer!");
+            System.out.println("Give an Integer: ");
+            scanner.next();
+        }
+        int n = scanner.nextInt();
+        return n;
     }
 
     private long getLong() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Give a long number: ");
-        String n = scanner.nextLine();
-        return Long.parseLong(n);
+        while (!scanner.hasNextLong()) {
+            System.out.println("That's not a Long!");
+            System.out.println("Give a Long: ");
+            scanner.next();
+        }
+        long n = scanner.nextLong();
+        return n;
     }
     private float getFloat() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Give a float number: ");
-        String n = scanner.nextLine();
-        return Float.parseFloat(n);
+        while (!scanner.hasNextFloat()) {
+            System.out.println("That's not a Float!");
+            System.out.println("Give a Float: ");
+            scanner.next();
+        }
+        float n = scanner.nextFloat();
+        return n;
     }
 
     private void menuInfo() {
